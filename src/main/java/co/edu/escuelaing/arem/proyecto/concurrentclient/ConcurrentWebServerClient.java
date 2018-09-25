@@ -19,6 +19,8 @@ import java.util.logging.Logger;
  */
 public class ConcurrentWebServerClient {
     public static Integer threads= 5;
+    public static Integer request= 5;
+
     
     public static void main(String[] args) throws IOException {
         
@@ -29,15 +31,11 @@ public class ConcurrentWebServerClient {
         boolean isCompleted=false;
         
         ExecutorService executor = Executors.newFixedThreadPool(threads);
-        while (!isCompleted){
-            executor.execute(new URLReader()));
+        while (request>0){
+            executor.execute(new URLReader(args));
+            request--;
         }
         
-        try {
-            serverSocket.close();
-        } catch (IOException ex) {
-            Logger.getLogger(ConcurrentWebServerClient.class.getName()).log(Level.SEVERE, null, ex);
-        }   
     }
     
     
