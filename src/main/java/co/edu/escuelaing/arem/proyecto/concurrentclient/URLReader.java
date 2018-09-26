@@ -20,9 +20,6 @@ public class URLReader implements Runnable  {
         this.args=args;
     }
  
-    
-    
-    
     @Override
     public void run() {
       try {
@@ -39,5 +36,6 @@ public class URLReader implements Runnable  {
       } catch (MalformedURLException ex) { 
                Logger.getLogger(URLReader.class.getName()).log(Level.SEVERE, null,ex); 
        } 
+
     }
 }

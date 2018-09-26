@@ -18,8 +18,8 @@ import java.util.logging.Logger;
  * @author Nicolás Osorio 
  */
 public class ConcurrentWebServerClient {
-    public static Integer threads= 5;
-    public static Integer request= 5;
+    public static Integer threads= 4;
+    public static Integer request= 4;
 
     
     public static void main(String[] args) throws IOException {
@@ -35,7 +35,10 @@ public class ConcurrentWebServerClient {
             executor.execute(new URLReader(args));
             request--;
         }
-        
+        executor.shutdown();
+        while (!executor.isTerminated()) {
+        }
+       
     }
     
     
